@@ -4,6 +4,8 @@ Webcam.set({
     image_format: 'png',
     png_quality:90
 })
+ prediction_1 = "";
+ prediction_2 = "";
 camera = document.getElementById("camera");
  Webcam.attach('camera');
 
@@ -52,4 +54,11 @@ function gotResult(error, results){
             document.getElementById("update_emoji2").innerHTML = "&#128077;"
         }    
     }
+}
+function speak(){
+    var synth = window.speechSynthesis;
+    speak_data_1 = "the first prediction is " + prediction_1;
+    speak_data_2 = "the second prediction is " + prediction_2;
+    var utterThis = new SpeechSynthesisUtterance(speak_data_1 + speak_data_2);
+    synth.speak(utterThis);
 }
